@@ -153,7 +153,7 @@ CLIENT_URL=http://localhost:5173
 
 ```bash
 # Clone Repo
-https://github.com/Abhishek-Singh5/mern-auth-otp
+[https://github.com/Abhishek-Singh5/mern-auth-otp](https://github.com/Abhishek-Singh5/full_stack_user_authentication_project.git)
 
 # Backend Setup
 cd server
