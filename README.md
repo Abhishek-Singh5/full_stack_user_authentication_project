@@ -2,6 +2,16 @@
 
 A powerful and secure **Full-Stack Authentication System** built using the **MERN (MongoDB, Express.js, React, Node.js)** stack. This project features complete user authentication with **OTP-based email verification**, **JWT-based session management**, and **password reset functionality**. Email services are powered by **Brevo SMTP (port 587 with TLS/STARTTLS)**.
 
+Developed a secure MERN stack authentication system with **OTP-based email verification** using Brevo SMTP (TLS, Port 587), supporting user registration, login, and password reset workflows.
+
+Implemented **JWT-based session management** and protected API routes using Express middleware and HttpOnly cookies for enhanced security and user state management.
+
+Engineered dynamic OTP generation and expiry logic with 24-hour validity, **integrated with Nodemailer and MongoDB Atlas** for persistent and scalable storage.
+
+Applied **bcrypt hashing** for password security and created RESTful APIs for user management, authentication state checks, and secure logout with cookie clearing.
+
+Built a responsive React frontend with **Tailwind CSS and React Context API**, featuring real-time validations, route protection, toast notifications, and global auth state handling.
+
 ---
 
 ## ✨ Key Features
