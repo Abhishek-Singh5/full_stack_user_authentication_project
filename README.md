@@ -158,7 +158,7 @@ CLIENT_URL=http://localhost:5173
 # Backend Setup
 cd server
 npm install
-npm run dev
+npm run server
 
 # Frontend Setup
 cd ../client
