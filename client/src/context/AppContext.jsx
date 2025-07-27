@@ -7,7 +7,7 @@ export const AppContext = createContext();
 export const AppContextProvider = (props) => {
 
 
-    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    const backendUrl = "https://user-authentication-backend-3u1o.onrender.com";
 
     //  Set credentials on each request
     axios.defaults.withCredentials = true;
