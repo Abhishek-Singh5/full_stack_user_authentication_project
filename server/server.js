@@ -18,19 +18,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const allowedOrigins = [
-  "http://localhost:5173", // Dev
-  "https://user-authentication-client-j6l4.onrender.com" // Deployed frontend
+  "http://localhost:5173",
+  "https://user-authentication-client-j6l4.onrender.com"
 ];
 
 app.use(cors({
   origin: function(origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
+      return callback(null, true);
     } else {
-      callback(new Error("Not allowed by CORS"));
+      return callback(new Error("CORS not allowed for this origin"), false);
     }
   },
-  credentials: true
+  credentials: true,
 }));
 
 
