@@ -6,7 +6,11 @@ import { isAuthenticated } from "../controllers/authController.js";
 const userRouter = express.Router();
 
 userRouter.get('/data', userAuth, getUserData);
-userRouter.get('/is-auth', userAuth, isAuthenticated);
+// userRouter.get('/is-auth', userAuth, isAuthenticated);
+userRouter.get("/is-auth", isAuthenticated, (req, res) => {
+  return res.json({ user: req.user });
+});
+
 
 
 export default userRouter;
