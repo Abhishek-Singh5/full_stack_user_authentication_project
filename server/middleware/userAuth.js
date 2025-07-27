@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-const userAuth = async (req, res, next) => {
+export const userAuth = async (req, res, next) => {
     const { token } = req.cookies;
 
     if (!token) {
@@ -22,5 +22,31 @@ const userAuth = async (req, res, next) => {
     }
 };
 
-export default userAuth;
+
+
+// Middleware to verify JWT from cookies and attach user info to the request object
+export const isAuthenticated = (req, res, next) => {
+  try {
+    const token = req.cookies?.token;
+
+    if (!token) {
+      return res.status(401).json({
+        success: false,
+        message: "Access denied. No token provided.",
+      });
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    
+    // Attach user to request
+    req.user = decoded;
+
+    next();
+  } catch (err) {
+    return res.status(401).json({
+      success: false,
+      message: "Invalid or expired token.",
+    });
+  }
+};
 
