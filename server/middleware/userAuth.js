@@ -1,31 +1,31 @@
 import jwt from 'jsonwebtoken';
 
-export const userAuth = async (req, res, next) => {
-    const { token } = req.cookies;
+// export const userAuth = async (req, res, next) => {
+//     const { token } = req.cookies;
 
-    if (!token) {
-        return res.status(401).json({ success: false, message: "Not Authorized, Login Again" });
-    }
+//     if (!token) {
+//         return res.status(401).json({ success: false, message: "Not Authorized, Login Again" });
+//     }
 
-    try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+//     try {
+//         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        if (decoded.id) {
-            req.user = { id: decoded.id }; // FIXED: set on req.user, not req.body
-            next();
-        } else {
-            return res.status(401).json({ success: false, message: "Not Authorized, Login Again" });
-        }
+//         if (decoded.id) {
+//             req.user = { id: decoded.id }; // FIXED: set on req.user, not req.body
+//             next();
+//         } else {
+//             return res.status(401).json({ success: false, message: "Not Authorized, Login Again" });
+//         }
 
-    } catch (error) {
-        return res.status(401).json({ success: false, message: error.message });
-    }
-};
+//     } catch (error) {
+//         return res.status(401).json({ success: false, message: error.message });
+//     }
+// };
 
 
 
 // Middleware to verify JWT from cookies and attach user info to the request object
-export const isAuthenticated = (req, res, next) => {
+export const userAuth = (req, res, next) => {
   try {
     const token = req.cookies?.token;
 
