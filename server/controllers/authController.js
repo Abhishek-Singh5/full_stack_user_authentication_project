@@ -217,14 +217,32 @@ export const verifyEmail = async (req, res) => {
 
 
 // check if user is authenticated
-export const isAuthenticated = async (req, res) => {
-    try {
-        return res.json({ success: true, message: "User is authenticated" });
+// export const isAuthenticated = async (req, res) => {
+//     try {
+//         return res.json({ success: true, message: "User is authenticated" });
 
-    } catch (error) {
-        res.json({success: false, message: error.message});
-    }
-}
+//     } catch (error) {
+//         res.json({success: false, message: error.message});
+//     }
+// }
+
+
+export const isAuthenticated = (req, res, next) => {
+  const token = req.cookies?.token;
+
+  if (!token) {
+    return res.status(401).json({ message: "Not authorized" });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (err) {
+    return res.status(401).json({ message: "Invalid token" });
+  }
+};
+
 
 
 
